@@ -24,10 +24,10 @@ const AI_MODELS = [
 ];
 const AI_RETRY_DELAYS_MS = [1000, 2000, 4000];
 
-app.use(cors({ origin: CLIENT_ORIGIN === '*' ? '*' : CLIENT_ORIGIN.split(','), methods: ['GET', 'POST', 'PUT', 'DELETE'], credentials: true }));
+app.use(cors({ origin: true, methods: ['GET', 'POST', 'PUT', 'DELETE'], credentials: true }));
 app.use(express.json());
 
-const io = new Server(server, { cors: { origin: CLIENT_ORIGIN === '*' ? '*' : CLIENT_ORIGIN.split(',') } });
+const io = new Server(server, { cors: { origin: true, credentials: true } });
 
 const DEFAULT_CODE = {
   javascript: `// JavaScript Playground\nfunction greet(name) {\n  return \`Welcome to SyncForge, \${name}!\`;\n}\n\nconsole.log(greet("Developer"));\n`,
